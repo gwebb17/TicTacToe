@@ -14,11 +14,11 @@ function placeXOrO(squareNumber) {
         //this condition checks whos turn it is
     if (activePlayer === 'X') {
         //If active player is equal to 'X', the x.png is placed in HTML
-        select.style.backgroundImage= 'url("images/x.png")';
+        select.style.backgroundImage= 'url("images/thisxx.png")';
         //Active player may only be 'X' or 'O' so if not 'X' it must be 'O'
     } else {
         //if activeplayer is equal to 0 the 0.png is placed in HTML
-        select.style.backgroundImage='url("images/o.png")';
+        select.style.backgroundImage='url("images/thisoo.png")';
     }
     //this function parses the selectedSquares array to search for win conditions
     //drawLine() function is called to draw a line on the screen if the condition is met
@@ -59,7 +59,7 @@ function placeXOrO(squareNumber) {
         //9 squares are selected the code executes
         else if (selectedSquares.length >=9) {
             //this function plays tie game sound
-            audio('./media/tie.mp3');
+            audio('./media/artillery.mp3');
             //this function sets a .3 second timer before resetGame is called
             setTimeout(function () {resetGame();}, 500);
         }
@@ -90,7 +90,7 @@ function placeXOrO(squareNumber) {
         activePlayer='X';
     }
     //this function plays placement sound
-    audio('./media/place.mp3');
+    audio('./media/cow_moo.mp3');
     //this condition checks to see if it is the computers turn
     if (activePlayer==='O') {
         //this function disables clicking for computers turn
@@ -204,7 +204,7 @@ function drawWinLine(coordX1, coordY1, coordX2, coordY2) {
         //this line disallows clicking while the win sound is playing
         disableClick();
         //this line plays the win sounds
-        audio('./media/winGame.mp3');
+        audio('./media/airhorn.mp3');
         //this line calls our main animation loop
         animateLineDrawing();
         //this line waits 1 second then clears canvas, resets game, and allows clicking again
