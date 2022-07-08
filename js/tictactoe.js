@@ -2,7 +2,7 @@
 let activePlayer= 'X';
 //this array stores an array of moves, and use this to determine win conditions.
 let selectedSquares=[];
-
+let flag=false;
 //This function is for placing an X or O in a square.
 function placeXOrO(squareNumber) {
     //this condition ensures a square hasnt been selected already
@@ -36,7 +36,7 @@ function placeXOrO(squareNumber) {
         //x 2, 5, 8 condition
         else if (arrayIncludes('2X', '5X', '8X')) {drawWinLine(508,50,508,558)}
         //X 6, 4, 2 condition
-        else if (arrayIncludes('6X', '4X', '2x')) {drawWinLine(100,508,510,90)}
+        else if (arrayIncludes('6X', '4X', '2X')) {drawWinLine(100,508,510,90)}
         //x 0, 4 8 condition
         else if (arrayIncludes('0X', '4X', '8X')) {drawWinLine(100,100,520,520)}
         //O 0 1, 2 condition
@@ -52,7 +52,7 @@ function placeXOrO(squareNumber) {
         //O 2, 5, 8 condition
         else if (arrayIncludes('2O', '5O', '8O')) {drawWinLine(508,50,508,558)}
         //O 6, 4, 2 condition
-        else if (arrayIncludes('6O', '4O', '2O')) {drawWinLin(100,508,510,90)}
+        else if (arrayIncludes('6O', '4O', '2O')) {flag=true; drawWinLine(100,508,510,90)}
         //O 0, 4, 8 condition
         else if (arrayIncludes('0O', '4O', '8O')) {drawWinLine(100,100,520,520)}
         //this condition checks for a tie. if none of the above conditions are met and
@@ -189,7 +189,7 @@ function drawWinLine(coordX1, coordY1, coordX2, coordY2) {
             if (x1<=x2 && y1>=y2) {
                 if (x<x2) {x +=10;}
                 if (y>y2) {y-=10;}
-                if (x>=x2 && y <=y2) {cancelAnimationFrame(animationLoop);}
+                if (x>=x2 && y >=y2) { cancelAnimationFrame(animationLoop); }
             }
         }
         //this function clears our canvas after our win line is drawn
